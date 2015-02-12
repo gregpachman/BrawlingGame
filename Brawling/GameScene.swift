@@ -43,7 +43,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let projectile = contact.bodyA.node as ProjectileNode
             let pNode = contact.bodyB.node as PlayerNode
             
-            pNode.player?.attackWithDamage(projectile.damage)
+            var newHealth = pNode.player?.attackWithDamage(projectile.damage)
+            
+            if newHealth <= 0 {
+                
+                pNode.removeFromParent()
+                
+            }
+            
+            playerReady(pNode.player!)
             
             projectile.removeFromParent()
             
@@ -56,8 +64,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let projectile = contact.bodyB.node as ProjectileNode
             let pNode = contact.bodyA.node as PlayerNode
             
-            pNode.player?.attackWithDamage(projectile.damage)
+            var newHealth = pNode.player?.attackWithDamage(projectile.damage)
             
+            if newHealth <= 0 {
+                
+                pNode.removeFromParent()
+                
+                }
+            playerReady(pNode.player!)            
             projectile.removeFromParent()
             
         } else if contact.bodyB.categoryBitMask == NodeType.Projectile.rawValue {

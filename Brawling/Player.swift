@@ -8,19 +8,33 @@
 
 import UIKit
 
+
 class Player: NSObject {
     
     var healthPoints = 100
     var displayName = ""
     var skin: UIImage?
+    var death = 0
     
-    func attackWithDamage(damage: Int) {
+    
+    func attackWithDamage(damage: Int) -> Int {
         // damage reduction based on armor powerup
         
         healthPoints -= damage
         
+        var newHealth = healthPoints
+        
+        
         println(displayName + " has \(healthPoints) left")
         
+        
+        
+        if newHealth <= 0 {
+            
+            ++death
+        }
+        
+        return newHealth
     }
    
 }
