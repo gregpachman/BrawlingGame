@@ -15,6 +15,7 @@ class Player: NSObject {
     var displayName = ""
     var skin: UIImage?
     var death = 0
+    var killCount = 0
     
     
     func attackWithDamage(damage: Int) -> Int {

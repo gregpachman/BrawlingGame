@@ -16,6 +16,7 @@ class PlayerNode: SKSpriteNode {
 
 class ProjectileNode: SKSpriteNode {
     
+    var player: Player?
     var damage = 0
     
 }
